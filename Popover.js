@@ -365,7 +365,7 @@ export default class Popover extends React.Component {
     arrowStyle = [...arrowStyle, {transform: arrowTransform}];
 
     return (
-      <TouchableWithoutFeedback onPress={this.props.onClose}>
+      <TouchableWithoutFeedback accessible={false} onPress={this.props.onClose}>
         <View style={[styles.container, this.props.style, contentSizeAvailable && styles.containerVisible ]}>
           <Animated.View style={[styles.background, ...extendedStyles.background]}/>
           <Animated.View style={[styles.popover, {

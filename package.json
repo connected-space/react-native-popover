@@ -1,6 +1,6 @@
 {
-  "name": "react-native-popover",
-  "version": "0.3.0",
+  "name": "@taw/react-native-popover",
+  "version": "2.8.2",
   "description": "A <Popover /> component for react-native",
   "main": "Popover.js",
   "author": "Jean Regisser <jean.regisser@gmail.com> (https://github.com/jeanregisser)",
@@ -14,15 +14,41 @@
   ],
   "license": "MIT",
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node_modules/react-native/packager/packager.sh",
+    "ci-pre-publish": "json -I -f package.json -e 'this.private=false'",
+    "publish-tag": "npm dist-tag add $npm_package_name@$npm_package_version",
+    "ci-pre-publish-release": "npm run ci-pre-publish-release-tag && npm run ci-pre-publish-release-branch",
+    "ci-pre-publish-release-tag": "json -I -f package.json -e \"this.publishConfig.tag='$RELEASE_TAG'\"",
+    "ci-pre-publish-release-branch": "json -I -f package.json -e \"this.release.branch='${BUILD_SOURCEBRANCH#refs/heads/}'\"",
+    "ci-release-branch": "git-release-branch",
+    "git-vsts-branch": "git-vsts-branch",
+    "release": "npm-release"
+  },
+  "private": true,
+  "files": [
+    "Popover.js"
+  ],
+  "dependencies": {
+    "prop-types": "^15.5.10",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "@taw/build-scripts": "^1.4.0",
+    "@taw/condition-vsts": "^1.0.5",
+    "json": "^9.0.3",
+    "npm-release": "^1.0.0",
+    "react-native": "0.29.0"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:jeanregisser/react-native-popover.git"
+    "url": "https://github.com/agilityworks-uk/react-native-popover.git"
   },
-  "devDependencies": {
-    "react": "^15.0.2",
-    "react-native": "^0.26.2",
-    "prop-types": "^15.5.10"
+  "publishConfig": {
+    "access": "restricted",
+    "tag": "taw-dev"
+  },
+  "release": {
+    "branch": "develop",
+    "verifyConditions": "@taw/condition-vsts"
   }
 }

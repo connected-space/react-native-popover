@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('react');
+var React = require('react-native');
 var Popover = require('../Popover');
 var {
   AppRegistry,
@@ -9,36 +9,34 @@ var {
   Text,
   TouchableHighlight,
   View,
-} = require('react-native');
+} = React;
 
-var PopoverExample = React.createClass({
-  getInitialState() {
-    return {
-      isVisible: false,
-      buttonRect: {},
-    };
-  },
+class PopoverExample extends React.Component {
+  state = {
+    isVisible: false,
+    buttonRect: {},
+  };
 
-  showPopover(ref) {
+  showPopover = (ref) => {
     this.refs[ref].measure((ox, oy, width, height, px, py) => {
       this.setState({
         isVisible: true,
         buttonRect: {x: px, y: py, width: width, height: height}
       });
     });
-  },
+  };
 
-  closePopover() {
+  closePopover = () => {
     this.setState({isVisible: false});
-  },
+  };
 
-  renderButton(text, ref) {
+  renderButton = (text, ref) => {
     return (
       <TouchableHighlight ref={ref} style={styles.button} onPress={this.showPopover.bind(this, ref)}>
         <Text style={styles.buttonText}>{text}</Text>
       </TouchableHighlight>
     );
-  },
+  };
 
   render() {
     var {width, height} = Dimensions.get('window');
@@ -75,7 +73,7 @@ var PopoverExample = React.createClass({
       </View>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   container: {

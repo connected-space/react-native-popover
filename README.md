@@ -2,7 +2,8 @@
 
 [![npm version](http://img.shields.io/npm/v/react-native-popover.svg?style=flat-square)](https://npmjs.org/package/react-native-popover "View this project on npm")
 [![npm version](http://img.shields.io/npm/dm/react-native-popover.svg?style=flat-square)](https://npmjs.org/package/react-native-popover "View this project on npm")
-[![npm licence](http://img.shields.io/npm/l/react-native-popover.svg?style=flat-square)](https://npmjs.org/package/react-native-popover "View this project on npm")
+[![Issue Stats](http://issuestats.com/github/jeanregisser/react-native-popover/badge/pr?style=flat-square)](https://github.com/jeanregisser/react-native-popover/pulls?q=is%3Apr+is%3Aclosed)
+[![Issue Stats](http://issuestats.com/github/jeanregisser/react-native-popover/badge/issue?style=flat-square)](https://github.com/jeanregisser/react-native-popover/issues?q=is%3Aissue+is%3Aclosed)
 
 A `<Popover>` component for react-native. This is still very much a work
 in progress and only handles the simplest of cases, ideas and
@@ -21,7 +22,7 @@ npm i --save react-native-popover
 ```jsx
 'use strict';
 
-var React = require('react');
+var React = require('react-native');
 var Popover = require('react-native-popover');
 var {
   AppRegistry,
@@ -29,7 +30,7 @@ var {
   Text,
   TouchableHighlight,
   View,
-} = require('react-native');
+} = React;
 
 var PopoverExample = React.createClass({
   getInitialState() {
